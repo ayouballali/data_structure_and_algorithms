@@ -6,7 +6,7 @@ import java.util.Stack;
 public class Main {
     public static void main(String[] args) {
 
-        String s = "/u/love/hi\\i\\ho\\" ;loveihi  ihievolho
+        String s = "/u/love/hi\\i\\ho\\" ;
         Stack<String> stack = new Stack<>();
         String temp = "";
         for(int i=0;i<s.length();i++){
