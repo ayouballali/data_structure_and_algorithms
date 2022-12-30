@@ -1,46 +1,47 @@
 public class PriorityQueueImp {
     Item [] data ;
-    int front,rear,SIZE;
+    int idx,SIZE;
 
     PriorityQueueImp(int capacity){
         data = new Item[capacity];
-        front = -1;
-        rear = -1;
+        idx = -1;
         SIZE = capacity ;
     }
         
 
     public boolean isEmpty(){
-        if(front ==-1)  return true;
+        if(idx == -1)  return true;
         return false;
     }
 
     public void insert (Item item){
         if(isEmpty()){
             data[0] = item;
-            rear++;
-            front++;
+            idx++;
             return;
         }
 
         // if it's not empty 
-        int i ;  boolean inserted = false;
+        int i ;
+        idx++;
 
-        for( i=front;i<=rear;i++){
+        for( i=idx-1;i>=0;i--){
             
-            if(item.priority > data[i].priority){
-                erase(i,item);
-                rear++;
-                inserted = true;
+            if(item.priority <= data[i].priority){
+               
+                data[i+1] = data[i];
+                data[i] = item;
+                
+            }else{
+                data[i+1] = item ;
                 break;
             }
 
-            // else 
+            
           
         }
-        // if it's the last element 
-        if(!inserted)
-            data[++rear]=item;
+     
+        
         
 
         
@@ -51,19 +52,12 @@ public class PriorityQueueImp {
         if(isEmpty()){
             throw new IllegalStateException("queue is empthy");
         }
-        return data[front++];
+        return data[idx--];
 
     }
 
 
-    private void erase(int index,Item item){
-        Item temp = data[index];
-        data[index] = item ;
-        data[index+1] = temp;
-        for(int i=index+2;i<rear;i++){
-            data[i] =  data[i+1];
-        }
-    }
+  
 }
 
 class Item{
