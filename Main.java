@@ -1,12 +1,24 @@
 public class Main {
     public static void main(String[] args) {
-        LinkedListImp linkedListImp = new LinkedListImp();
-        linkedListImp.add(5);
-        linkedListImp.add(10);
-        linkedListImp.add(0);
-        linkedListImp.display();
+        Tree tree = new Tree();
+        tree.root = new Node1(1);
+        tree.root.left = new Node1(2);
+        tree.root.right = new Node1(3);
+        tree.root.left.left = new Node1(4);
+        tree.root.left.right = new Node1(5);
+        tree.root.right.left = new Node1(6);
+        tree.root.right.right = new Node1(7);
+        tree.root.left.left.left = new Node1(8);
 
-        System.out.println(linkedListImp.remove());
-        linkedListImp.display();
+    try{
+        tree.isFullTree(tree.root);
+    }catch(Exception e){
+        System.out.println("NO");
+        return ;
+    }
+      
+          System.out.println("YES");
+        
     }
 }
+
