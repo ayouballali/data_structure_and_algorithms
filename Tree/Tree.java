@@ -47,6 +47,16 @@ public class Tree {
                 return ((node.left == null && node.right == null) || (node.left != null && node.right != null)); 
         }
 
+
+        boolean ifFullTreeO(Node1 node ){
+
+                if(node == null || (node.left ==null && node.right==null))        return true;
+
+                if(node.left != null && node.right != null) return ifFullTreeO(node.left)&&ifFullTreeO(node.right);
+                
+                return false;
+        }
+
     
 
 }
